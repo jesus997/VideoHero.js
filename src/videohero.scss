@@ -1,0 +1,23 @@
+.video-hero {
+position: relative;
+overflow: hidden;
+background-color: #000;
+background-position: 50%;
+background-repeat: no-repeat;
+background-size: cover;
+min-height: 420px;
+min-height: 23.3333333333rem;
+height: 100vh;
+}
+.video-hero .videohero-element {
+position: absolute;
+right: 0;
+bottom: 0;
+min-width: 100%;
+min-height: 100%;
+width: 100%;
+height: auto;
+z-index: 1;
+-o-object-fit: cover;
+    object-fit: cover;
+}

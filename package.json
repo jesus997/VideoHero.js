@@ -1,0 +1,47 @@
+{
+  "name": "videohero.js",
+  "version": "1.0.0",
+  "description": "Simple plugins for JQuery that allows to place a video at 100% of the screen. Ideal for \"Hero\" type headers with videos.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env ASPNETCORE_ENVIRONMENT=Development NODE_ENV=development dotnet run",
+    "watch": "webpack --watch --mode=development",
+    "build": "webpack --mode=production --optimize-minimize",
+    "build:dev": "webpack --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesus997/VideoHero.js.git"
+  },
+  "keywords": [
+    "video",
+    "hero",
+    "fullscreen"
+  ],
+  "author": "Jesus Magallon <jesus@yosoydev.net>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/jesus997/VideoHero.js/issues"
+  },
+  "homepage": "https://github.com/jesus997/VideoHero.js#readme",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "cross-env": "^5.2.0",
+    "css-loader": "^2.1.0",
+    "extract-text-webpack-plugin": "v4.0.0-alpha.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  }
+}

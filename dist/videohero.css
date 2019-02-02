@@ -1,38 +1,7 @@
-.video-hero {
-position: relative;
-overflow: hidden;
-background-color: #000;
-background-position: 50%;
-background-repeat: no-repeat;
-background-size: cover;
-min-height: 420px;
-min-height: 23.3333333333rem;
-height: 100vh;
-display: -webkit-box;
-display: -webkit-flex;
-display: -ms-flexbox;
-display: flex;
--webkit-box-align: center;
--webkit-align-items: center;
-    -ms-flex-align: center;
-        align-items: center;
--webkit-box-pack: center;
--webkit-justify-content: center;
-    -ms-flex-pack: center;
-        justify-content: center;
--webkit-flex-flow: row;
-    -ms-flex-flow: row;
-        flex-flow: row;
-}
-.video-hero .videohero-element {
-position: absolute;
-right: 0;
-bottom: 0;
-min-width: 100%;
-min-height: 100%;
-width: 100%;
-height: auto;
-z-index: 1;
--o-object-fit: cover;
-    object-fit: cover;
-}
+/**
+ * VideoHero.css
+ * Developed by Jesus Magallon
+ * Email: jesus@yosoydev.net
+ * GitHub: https://github.com/jesus997/VideoHero.js
+ * License: GNU General Public License v3.0
+ */.videohero{position:relative;overflow:hidden;background-color:#000;background-position:50%;background-repeat:no-repeat;background-size:cover;min-height:420px;min-height:23.3333333333rem;height:100vh}.videohero:hover .videohero-mute-button,.videohero:focus .videohero-mute-button{opacity:1;-webkit-transition:opacity .5s;transition:opacity .5s}.videohero .videohero-mute-button{z-index:2;width:64px;height:64px;background-color:transparent;background-origin:center center;background-position:center;background-repeat:no-repeat;background-size:contain;opacity:0;position:absolute;border:0;cursor:pointer;bottom:0;right:0;-webkit-transition:opacity .5s;transition:opacity .5s}.videohero .videohero-mute-button.sound-off{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEwklEQVR4nO2aTYgcRRTHXwybxEjUQ+JXViNEDxEkB1HUDeJHFC/xYsCDycGIJiCiKEFFlMQkRCUghIgHPxaMII7uzg7tdFf1uGyIEYWM7m6Y2a6qN+sH0WgwqDFqEt3d9jBu9avJzKZHpnttrD/Mpf79tt77dVV1dfUCWFlZWVlZWVlZWVlZpSEXnwKmDoOrXprtVNKXF+wErkLgKgSmJiE/fGHsWL/SA4MjSxPMLmHR4qd/fdgdK5bj/f9AmwAf1yWcaQJqVnxbAMQbZOScAie4KeGMO6hWxbcDoKRWAFc/k9ijUBxblnDmHdBMxbcC4FRvAI4HwcM94BxZqNtLchVwdTIaCXIUyuWuNMtpT2crvhUAhnnt+7IPwnCO9nxcZ8T78ok0S4qvOMW3AuDjLuMaL9hp+Ex9QPxfoH/0orTKiqe4xbcCkKvOA664cZ2La7Tfh93A5YkIEL6eTmGsfCmU5KoZf1zsjV08BbAlPMfoqyAWAZMBWflrsBvna99Tm439RKF2VbLFO5WVwNREW8XFBeDJXuDyN+DiZaNPv9IDXE1F1+PT2iuXu8AXX0ee2JYsACY2dbx4rkLor6w0i1TPmv2qNyNPnoB38HztucGTJO4bY7HMDABn/Arg8jPSNgVFdYvu15GL66NDz/cHtVesXmKMSrd6e/YA9GE35HAJMPlVNKflCOTCubpvLl4l3v6GvD7Rnq9ezCYAAAA+dqfpyft03yW80fAKX16sPRd3EABD2QUAYG6AOLq6PRfOBaaOR9NA3KM9Co7JX894mmQKgI93kRHwl7EN5rIYFSq263bnyEJgalJ7JbUiuwB6hxYAU6e0RxdDXzxHAAwYuXH5nfac4NbsAqj3Qxe1jbq9KB4gcftMAHio6fToMIDtKQEYiIpRm3W7i2vJ9BhuAHCArAPrkwHgiW2pAKBzne78mFxPAIyZuakvyN98OBkAaU0Brj4lADbodl8+Qu6yuRfgcjxaN4J7swugXO4Cpn7X3oe127Tn4vMk7v0GAMeidaPSk10Axdrd5C6fbngM9keeekW35w6fazwG87g8uwA8+RHxuG4PwzngyR+15+LaCEztZgNa79CCbAJwcY3RTg9A6meB094UOHJxBC14hqwZB5IpPmkAgyNLgctvyRD/3NjS+uo1ElM28uJqXxRHdoiZAuDJj0nxE8Br10UF1i4Hrv6IRkbwkPbqr8OTJHZ1cgA4bkgEQOnQtQ1D/3GzX/kuKfAnY2Gkx2Jc/QC56rzkAORwSX3HJY+1/pE71c4I8HEXMPH9GUO4fiRG4KgXtPf26HnGOwD1ZlV+sPVfLYKNKohF4KEkdx+NFZ7Tnan8EwrisrRKPLvagdAMwG6cDxwHjes8eYf2i2PLgH4h4mJvmuXFU1wITT+MkFff+rqww/DphxGmjv+37j5VHAhNP43JkvZ98Z5x2mu+FofA1aNpltS+vGBL2wA8eT1wdMFXbxnznqnVwOTpKB4PJncE1knNBCHu5/EBvMb4HMbVUcgPX5ls4p1UKwhxAXi4h8SdzNY/SEyrGYS4AOrnAVP1nSI5Ms+cKASmJqE0fkHs2DwuB2f86gSzS0lMPAZMIfjB1tlOxcrKysrKysrKysrq/6u/AbbeyBS5sX5zAAAAAElFTkSuQmCC")}.videohero .videohero-mute-button.sound-on{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACK0lEQVR4nO3XsUsbYRzG8UdaQdrBgjgIHULbvf9Al64O/g3SQVykY9ZoC9LRrVuhboIcEsm970XQ0o6BUAjee7+LILXUpZ0EJ8M5SGzFey9vaO59ubvfF25KAu/zgcslAMdxHMdxHMdxnI1acR2CztCiD66PYj8/3ISkBJISCBrA6z5xfSR7/Tt+eO3GT10fy05p4ysDoBtfCYCs8aUHGDW+1AAm40sLYDq+cACis4B29CrzkmrbeHyhAJq9lxB0Nda4UgEItTrx8TqATmcazV+Pxj7jTvJgElPTswXw+ftjBOoUMrpAK64bnc3r1iCoBxH9QUDLOayHPQBfLd15vUUbI8cH6vTvZ6IvxQY4COcg6MwI4d54SiBppdgAALDXfzESIW28H27mM942gA4hCNfdjHcBoEOQ4Zb98a4AtAi2x98AvHcCANwg+Orc3XgA8NU7ZwBet4Yg+pkC0Mh/+DBXt0D6o84BgguA1PHq473vBCsItgGyHnVZj8hSAJg8501+LBUSoNF4CEH9zPFZCJLWig2w339tNH6YFz+HoB+37xfULDZA+2QWfvQVggbG9/UBPYOkI8joAv7xYh7zARm/sfYdAACfDmfGPmOSTP3vTH078Txk/A0y+q2/6HJiAIUtCNerDQCMh1BKAMAcobQAgBlCqQEAwA8b1QYAshEqAQDoESoDAKQjVAoAuIsgaID2yazrI9lPqLcQFOf/H57jOI7jOI7jOE7fNQ4XocLZ+0paAAAAAElFTkSuQmCC")}.videohero .videohero-element{position:absolute;right:0;bottom:0;min-width:100%;min-height:100%;width:100%;height:auto;z-index:1;-o-object-fit:cover;object-fit:cover;z-index:1}

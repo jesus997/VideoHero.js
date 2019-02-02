@@ -33,13 +33,24 @@
                         error: "error",
                         provider: "videohero-provider-"
                     },
-                    video: "videohero-element"
+                    video: "videohero-element",
+                    buttons: {
+                        mute: {
+                            self: "videohero-mute-button",
+                            on: "sound-off",
+                            off: "sound-on"
+                        }
+                    }
+                },
+                i18n: {
+                    "mute": "Sound off",
+                    "unmute": "Sound on"
                 }
             }, settings);
 
             this.log("VideoHero has successfully initialized with the following configuration:");
             this.log(this.settings);
-
+            
             this.generate();
         }
 
@@ -89,6 +100,10 @@
                 }
             });
             this.settings = s;
+
+            if(this.settings.poster === "" && this.settings.provider === "youtube") {
+                this.settings.poster = "https://i.ytimg.com/vi/"+this.settings.videoid+"/maxresdefault.jpg";
+            }
         }
 
         setSourcesFromYoutube(videoTag) {
@@ -150,6 +165,13 @@
             this.log("Wrapper generated successfully.");
         }
 
+        generateMuteButton() {
+            return $("<button></button>")
+            .addClass(this.settings.classes.buttons.mute.self)
+            .addClass(this.settings.classes.buttons.mute.off)
+            .attr("aria-label", this.settings.i18n.mute);
+        }
+
         generateVideoTag() {
             var tag = $("<video></video>").addClass(this.settings.classes.video);
             $.each(this.settings.attrs, function(i, v) {
@@ -165,9 +187,26 @@
             return tag;
         }
 
+        toggleMute(video, btn, force=false) {
+            if(typeof video.get(0).muted !== "undefined"){
+                if(!video.get(0).muted || force) {
+                    video.get(0).muted = true;
+                    btn.removeClass(this.settings.classes.buttons.mute.on)
+                    .addClass(this.settings.classes.buttons.mute.off)
+                    .attr("aria-label", this.settings.i18n.mute);
+                } else {
+                    video.get(0).muted = false;
+                    btn.removeClass(this.settings.classes.buttons.mute.off)
+                    .addClass(this.settings.classes.buttons.mute.on)
+                    .attr("aria-label", this.settings.i18n.unmute);
+                }
+            }
+        }
+
         generate() {
             this.generateWrapperTag();
             var video = this.generateVideoTag();
+            var bMute = this.generateMuteButton();
             if(this.settings.provider.toLowerCase() === "youtube") {
                 this.setSourcesFromYoutube(video);
             } else if(this.settings.provider.toLowerCase() === "custom") {
@@ -183,8 +222,13 @@
             }
 
             if(this.settings.attrs.muted) {
-                if(typeof video.get(0).muted !== "undefined") video.get(0).muted = true;
+                this.toggleMute(video, bMute, true);
             }
+
+            var $this = this;
+            $(bMute).on("click", function() {
+                $this.toggleMute(video, bMute);
+            });
 
             if(this.settings.attrs.autoplay) {
                 var playPromise = video.get(0).play();
@@ -198,6 +242,7 @@
             }
 
             this.$el.html(video);
+            this.$el.prepend(bMute);
             this.log("Injection of the video complete.");
         }
     }

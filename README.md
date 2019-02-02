@@ -9,12 +9,12 @@ Simple plugins para JQuery que permite colocar un video al 100% de la pantalla. 
 |--|--|--|--|--|
 | **provider** | string | si | youtube | Proveedor de la fuente del video. Valores validos: `youtube` y `custom` |
 | **videoid** | string | solo si el proveedor es `youtube` | "" | ID del video de youtube. Generalmente se ve así: `Lwx47X_mc5A` |
-| **source** | string o objeto | solo si el proveedor es `custom` | "" | Puede ser la url al video o bien un (JSON)[https://github.com/jesus997/VideoHero.js/tree/master#m%C3%BAltiples-video-sources]. |
+| **source** | string o objeto | solo si el proveedor es `custom` | "" | Puede ser la url al video o bien un JSON |
 | **type** | string | solo si el proveedor es `custom` | "video/mp4" | Formato de video por default. *No aplica si se pasa un objeto JSON a `source`.* |
 | **poster** | string | no | si el proveedor es `youtube` se coloca la miniatura del video o si el proveedor es `custom` de deja vacío | Caratula del video. |
 | **log** | bool | no | false | Habilita o deshabilita el log. |
-| **api.url** | string | no | https://you-link.herokuapp.com/ | Host de la API que se usará para optener los sources del video de Youtube. |
-| **api.param** | string | no | ?url=https://www.youtube.com/watch?v= | Parámetro en la cual se enviará el ID del video. |
+| **api.url** | string | no | "https://you-link.herokuapp.com/" | Host de la API que se usará para optener los sources del video de Youtube. |
+| **api.param** | string | no | "?url=https://www.youtube.com/watch?v=" | Parámetro en la cual se enviará el ID del video. |
 | **attrs.muted** | bool | no | true | Reproduce el video con o sin sonido. |
 | **attrs.autoplay** | bool | no | true | Reproduce el video al cargar la página (auto-reproducción). |
 | **attrs.loop** | bool | no | true | Al finalizar el video lo vuelve a reproducir. |

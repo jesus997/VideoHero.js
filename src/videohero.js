@@ -12,6 +12,8 @@
             this.settings = $.extend({
                 provider: "youtube",
                 videoid: "",
+                source: "",
+                type:"video/mp4",
                 poster: "",
                 log: false,
                 api: {
@@ -39,6 +41,19 @@
             this.log(this.settings);
 
             this.generate();
+        }
+
+        isJson(item) {
+            item = typeof item !== "string" ? JSON.stringify(item) : item;
+            try {
+                item = JSON.parse(item);
+            } catch (e) {
+                return false;
+            }
+            if (typeof item === "object" && item !== null) {
+                return true;
+            }
+            return false;
         }
 
         get api_url() {
@@ -103,21 +118,36 @@
             });
         }
 
+        setSourcesFromCustom(videoTag) {
+            if(this.settings.source !== "") {
+                if(this.isJson(this.settings.source)) {
+                    $.each(this.settings.source, function(i, v) {
+                        var s = typeof v.source !== "undefined" ? v.source : false;
+                        var t = typeof v.type !== "undefined" ? v.type : false;
+                        if(s) {
+                            var f = $("<source></source>").attr("src", s);
+                            if(t) {
+                                f.attr("type", t);
+                            }
+                            videoTag.append(f);
+                        }
+                    });
+                } else {
+                    videoTag.append($("<source></source>").attr("src", this.settings.source)
+                    .attr("type", this.settings.type));
+                }
+            }
+        }
+
         generateWrapperTag() {
             this.getDataFromEl();
-            var tag = $("<div></div>"), clasess="";
-            if(this.$el.is("[id]")) {
-                tag.attr("id", this.$el.attr("id"));
-            }
-            if(this.$el.is("[class]")) {
-                tag.attr("class", this.$el.attr("class"));
-            }
+            var clasess="";
             clasess += this.settings.classes.container.wrapper;
             clasess += " " + this.settings.classes.container.preparing;
             clasess += " " + this.settings.classes.container.provider + this.settings.provider;
-            tag.addClass(clasess);
+            this.$el.addClass(clasess);
+            this.$el.css("background-image", "url("+this.settings.poster+")");
             this.log("Wrapper generated successfully.");
-            return tag;
         }
 
         generateVideoTag() {
@@ -136,17 +166,19 @@
         }
 
         generate() {
-            var wrapper = this.generateWrapperTag(),
-                video = this.generateVideoTag();
+            this.generateWrapperTag();
+            var video = this.generateVideoTag();
             if(this.settings.provider.toLowerCase() === "youtube") {
                 this.setSourcesFromYoutube(video);
+            } else if(this.settings.provider.toLowerCase() === "custom") {
+                this.setSourcesFromCustom(video);
             }
 
             if($(video).children().length > 0) {
-                wrapper.removeClass(this.settings.classes.container.preparing)
+                this.$el.removeClass(this.settings.classes.container.preparing)
                     .addClass(this.settings.classes.container.ready);
             } else {
-                wrapper.removeClass(this.settings.classes.container.preparing)
+                this.$el.removeClass(this.settings.classes.container.preparing)
                     .addClass(this.settings.classes.container.ready);
             }
 
@@ -165,8 +197,7 @@
                 }
             }
 
-            wrapper.html(video);
-            this.$el.replaceWith(wrapper);
+            this.$el.html(video);
             this.log("Injection of the video complete.");
         }
     }
@@ -175,5 +206,5 @@
         return this.each(function() {
             new VideoHero($(this), options);
         });
-    }    
+    }
 })(jQuery);

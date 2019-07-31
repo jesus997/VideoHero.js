@@ -17,7 +17,7 @@
                 poster: "",
                 log: false,
                 api: {
-                    url: "https://you-link.herokuapp.com/",
+                    url: "http://youlink.epizy.com/",
                     param: "?url=https://www.youtube.com/watch?v="
                 },
                 attrs: {

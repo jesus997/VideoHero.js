@@ -37,7 +37,7 @@
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "extract-text-webpack-plugin": "v4.0.0-alpha.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.0",
